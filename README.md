@@ -8,7 +8,7 @@ Elevation data and strike-dip data are available. File format of each data are a
 
 ### 1. Elevation data
 #### Format =>  id, x, y, z, lm  
-lm=0 gives equality constraint that the surface passes through the point. lm=-1 and lm=1 give inequality constraintthat the surface passes under the point or above the point respectively. "0, 9e9, 9e9, 9e9, 9" is required in final line.
+lm=0 gives equality constraint that the surface passes through the point. lm=-1 and lm=1 give inequality constraint that the surface passes under the point or above the point respectively. "0, 9e9, 9e9, 9e9, 9" is required in final line.
 Example ( elevation.xyz ):
 ```
 1,7,16,20,0
