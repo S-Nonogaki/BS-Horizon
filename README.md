@@ -166,7 +166,7 @@ End                          = others
 ```
 
 **Result**  
-<img src="https://github.com/S-Nonogaki/BS-Horizon/result.png" alt="result" width="150" height="150">
+<img src="https://github.com/S-Nonogaki/BS-Horizon/blob/master/result.png" alt="result" width="150" height="150">
 
 ## Reference
 Nonogaki S, Masumoto S and Shiono K (2008) Optimal Determination of Geologic Boundary Surface Using Cubic B-Spline. Geoinformatics, vol.19, no.2, pp.61-77 (in Japanese with English abstract). DOI: <https://doi.org/10.6010/geoinformatics.19.61>
