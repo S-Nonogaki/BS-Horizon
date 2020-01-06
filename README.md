@@ -3,6 +3,38 @@
 ## Description
 BS-Horizon is a Fortran77 program for determination of an optimal geologic surface using both elevation data and strike-dip data.
 
+## Input data format
+Elevation data and strike-dip data are available. File format of each data are as follows.
+
+### Elevation data
+Format =>  id, x, y, z, lm  
+lm=0 gives equality constraint that the surface passes through the point. lm=-1 and lm=1 give inequality constraintthat the surface passes under the point or above the point respectively. "0, 9e9, 9e9, 9e9, 9" is required in final line.
+Example ( elevation.xyz ):
+```
+1,7,16,20,0
+2,19,80,37,1
+3,23,43,42,0
+4,87,23,45,-1
+5,84,85,55,1
+0,9e9,9e9,9e9,9
+```
+
+### Elevation data
+Format =>  id, x, y, z, trend, dip  
+Strike-dip information is given as *trend* and *dip*. The *trend* is an azimuth direction of maximum slope of the surface measured clockwise from north. The *dip* is a slope angle of the surface. "0, 9e9, 9e9, 9e9, 9e9, 9e9" is required in final line. 
+Example ( dip.xyz ):
+```
+1,13,82,32,285,40
+2,28,35,45,220,30
+3,34,8,35,200,40
+4,47,83,48,285,30
+5,77,93,50,300,20
+6,64,59,65,220,20
+7,72,14,39,170,40
+8,90,47,45,150,30
+0,9e9,9e9,9e9,9e9,9e9
+```
+
 ## Usage
 ### How to complie BS-Horizon
 Compile with GFortran compiler.
@@ -13,18 +45,18 @@ gfortran bs_horizon.f -o bs_horizon.out
 ### How to run BS-Horizon
 Following is an example of surface estimation ( DEM generation ) using equality/inequality elevation data and strike-dip data. As for each parameters, please see Nonogaki *et al.* (2008).
 
-Run .out file.
+Run "bs_horizon.out".
 ```
 ./bs_horizon.out
 ```
 
-Input file names of elevaiton data and strike-dip data (optional).
+Set file names of elevaiton data and strike-dip data (optional).
 ```
 #####Data input#####  
-File name for elevation data   = **elevation.xyz**  
+File name for elevation data   = elevation.xyz  
 Do you have trend & dip data ?  
-                : 1(yes),0(no) = **1**  
-File name for trend & dip data = **dip.xyz**  
+                : 1(yes),0(no) = 1  
+File name for trend & dip data = dip.xyz  
 ```
 
 Basic information of input data is displayed.
@@ -40,10 +72,10 @@ Data area   : x(min),x(max)        =      7.0000     90.0000
 Set calculation range and the number of division which gives the number of knots used for B-spline definition.
 ```
 #####Calculation region#####  
-Calculation region : x(min),x(max) = **0,100**  
-                   : y(min),y(max) = **0,100**  
+Calculation region : x(min),x(max) = 0,100  
+                   : y(min),y(max) = 0,100  
 Number of division   Mx,My must be =<200  
-                   : Mx,My         = **50,50**  
+                   : Mx,My         = 50,50  
 ```
 
 Set calculation penalty alpha, penalty gamma, m1 and m2 parameters. To use inequality elevation data, alpha(min/max) and the number of iteration are also required.
@@ -133,5 +165,5 @@ End                          = others
 ```
 
 ## Reference
-Nonogaki S, Masumoto S and Shiono K (2008) Optimal Determination of Geologic Boundary Surface Using Cubic B-Spline. Geoinformatics, vol.19, no.2, pp.61-77 (in Japanese with English abstract). DOI:<https://doi.org/10.6010/geoinformatics.19.61>
+Nonogaki S, Masumoto S and Shiono K (2008) Optimal Determination of Geologic Boundary Surface Using Cubic B-Spline. Geoinformatics, vol.19, no.2, pp.61-77 (in Japanese with English abstract). DOI: <https://doi.org/10.6010/geoinformatics.19.61>
 
