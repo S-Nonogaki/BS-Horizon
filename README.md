@@ -2,12 +2,11 @@
 
 ## Description
 BS-Horizon is a Fortran77 program for determination of an optimal geologic surface using both elevation data and strike-dip data.
-
-
+  
 ## Input data format
 Elevation data and strike-dip data are available. File format of each data are as follows.
 
-### Elevation data
+### 1. Elevation data
 #### Format =>  id, x, y, z, lm  
 lm=0 gives equality constraint that the surface passes through the point. lm=-1 and lm=1 give inequality constraintthat the surface passes under the point or above the point respectively. "0, 9e9, 9e9, 9e9, 9" is required in final line.
 Example ( elevation.xyz ):
@@ -20,7 +19,7 @@ Example ( elevation.xyz ):
 0,9e9,9e9,9e9,9
 ```
 
-### Strike-dip data
+### 2. Strike-dip data
 #### Format =>  id, x, y, z, trend, dip  
 Strike-dip information is given as *trend* and *dip*. The *trend* is an azimuth direction of maximum slope of the surface measured clockwise from north. The *dip* is a slope angle of the surface. "0, 9e9, 9e9, 9e9, 9e9, 9e9" is required in final line. 
 Example ( dip.xyz ):
@@ -35,23 +34,23 @@ Example ( dip.xyz ):
 8,90,47,45,150,30
 0,9e9,9e9,9e9,9e9,9e9
 ```
-
+  
 ## Usage
-### How to complie BS-Horizon
+### 1. How to complie BS-Horizon
 Compile with GFortran compiler.
 
 ```
 gfortran bs_horizon.f -o bs_horizon.out
 ```
-### How to run BS-Horizon
+### 2. How to run BS-Horizon
 Following is an example of surface estimation ( DEM generation ) using equality/inequality elevation data and strike-dip data. As for each parameters, please see Nonogaki *et al.* (2008).
 
-**Step1.** Run "bs_horizon.out".
+**Step 1.** Run "bs_horizon.out".
 ```
 ./bs_horizon.out
 ```
 
-**Step2.** Set file names of elevaiton data and strike-dip data (optional).
+**Step 2.** Set file names of elevaiton data and strike-dip data (optional).
 ```
 #####Data input#####  
 File name for elevation data   = elevation.xyz  
@@ -70,7 +69,7 @@ Data area   : x(min),x(max)        =      7.0000     90.0000
             : z(min),z(max)        =     20.0000     55.0000  
 ```
 
-**Step3.** Set calculation range and the number of division which gives the number of knots used for B-spline definition.
+**Step 3.** Set calculation range and the number of division which gives the number of knots used for B-spline definition.
 ```
 #####Calculation region#####  
 Calculation region : x(min),x(max) = 0,100  
@@ -79,7 +78,7 @@ Number of division   Mx,My must be =<200
                    : Mx,My         = 50,50  
 ```
 
-**Step4.** Set calculation penalty alpha, penalty gamma, m1 and m2 parameters. To use inequality elevation data, alpha(min/max) and the number of iteration are also required.
+**Step 4.** Set calculation penalty alpha, penalty gamma, m1 and m2 parameters. To use inequality elevation data, alpha(min/max) and the number of iteration are also required.
 ```
 #####Calculation parameter#####  
 Some iteration is required.  
@@ -142,7 +141,7 @@ J1 = 0.14117E+01  J2 = 0.23432E+01
 Q  = 0.23434E+01  J  = 0.23432E+01  aR = 0.16830E-03  
 ```
 
-**Step5.** Input file name of DEM, output range, the number of grids. Optimal surface file can be saved (optional). 
+**Step 5.** Input file name of DEM, output range, the number of grids. Optimal surface file can be saved (optional). 
 ```
 #####Output result to files#####  
 File name for DEM or no (skip)     = result.grd  
@@ -154,7 +153,7 @@ File name for optimal surface
                       or no (skip) = result.opt  
 ```
 
-**Step6.** Select next work ( To finish, type zero ).
+**Step 6.** Select next work ( To finish, type zero ).
 ```
 #####Next work#####  
 Change input data            = 1  
@@ -166,8 +165,9 @@ End                          = others
 ```
 
 **Result**  
+  
 <img src="./result.png" alt="result" width="300" height="300">
 
 ## Reference
-Nonogaki S, Masumoto S and Shiono K (2008) Optimal Determination of Geologic Boundary Surface Using Cubic B-Spline. Geoinformatics, vol.19, no.2, pp.61-77 (in Japanese with English abstract). DOI: <https://doi.org/10.6010/geoinformatics.19.61>
+Nonogaki S, Masumoto S and Shiono K (2008) Optimal Determination of Geologic Boundary Surface Using Cubic B-Spline. *Geoinformatics*, vol.19, no.2, pp.61-77 (in Japanese with English abstract). DOI: <https://doi.org/10.6010/geoinformatics.19.61>
 
