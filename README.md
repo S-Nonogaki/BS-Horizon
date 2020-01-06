@@ -11,7 +11,7 @@ Compile with GFortran compiler.
 gfortran bs_horizon.f -o bs_horizon.out
 ```
 ### How to run BS-Horizon
-Following is an example of surface estimation ( DEM generation ) using equality/inequality elevation data and strike-dip data. As for each parameters, please see Nonogaki et al. (2008).
+Following is an example of surface estimation ( DEM generation ) using equality/inequality elevation data and strike-dip data. As for each parameters, please see Nonogaki *et al.* (2008).
 
 Run .out file.
 ```
@@ -21,10 +21,10 @@ Run .out file.
 Input file names of elevaiton data and strike-dip data (optional).
 ```
 #####Data input#####  
-File name for elevation data   = elevation.xyz  
+File name for elevation data   = **elevation.xyz**  
 Do you have trend & dip data ?  
-                : 1(yes),0(no) = 1  
-File name for trend & dip data = dip.xyz  
+                : 1(yes),0(no) = **1**  
+File name for trend & dip data = **dip.xyz**  
 ```
 
 Basic information of input data is displayed.
@@ -37,13 +37,13 @@ Data area   : x(min),x(max)        =      7.0000     90.0000
             : z(min),z(max)        =     20.0000     55.0000  
 ```
 
-Set calculation range and the number of division ( the number of cells ) knots which gives normalized b-spline.
+Set calculation range and the number of division which gives the number of knots used for B-spline definition.
 ```
 #####Calculation region#####  
-Calculation region : x(min),x(max) = 0,100  
-                   : y(min),y(max) = 0,100  
+Calculation region : x(min),x(max) = **0,100**  
+                   : y(min),y(max) = **0,100**  
 Number of division   Mx,My must be =<200  
-                   : Mx,My         = 50,50  
+                   : Mx,My         = **50,50**  
 ```
 
 Set calculation penalty alpha, penalty gamma, m1 and m2 parameters. To use inequality elevation data, alpha(min/max) and the number of iteration are also required.
